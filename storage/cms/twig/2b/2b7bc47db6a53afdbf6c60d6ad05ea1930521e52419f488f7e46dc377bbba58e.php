@@ -29,14 +29,14 @@ class __TwigTemplate_76aaabb7754ef58c548a311aa51101fa51ddf42347ac0ccfb359c0ea9f8
         $this->blocks = [
         ];
         $this->sandbox = $this->env->getExtension('\Twig\Extension\SandboxExtension');
-        $tags = array();
-        $filters = array("theme" => 3, "escape" => 4, "raw" => 5);
+        $tags = array("content" => 6);
+        $filters = array("theme" => 3);
         $functions = array();
 
         try {
             $this->sandbox->checkSecurity(
-                [],
-                ['theme', 'escape', 'raw'],
+                ['content'],
+                ['theme'],
                 []
             );
         } catch (SecurityError $e) {
@@ -61,18 +61,24 @@ class __TwigTemplate_76aaabb7754ef58c548a311aa51101fa51ddf42347ac0ccfb359c0ea9f8
         // line 1
         echo "<!-- Header -->
 <header id=\"header\" class=\"alt\">
-    <span class=\"logo\"><img src=\"";
+<!--     <span class=\"logo\"><img src=\"";
         // line 3
         echo $this->extensions['Cms\Twig\Extension']->themeFilter("assets/images/logo.svg");
-        echo "\" alt=\"Logo\" /></span>
+        echo "\" alt=\"Logo\" /></span> -->
+
+
     <h1>";
-        // line 4
-        echo twig_escape_filter($this->env, $this->sandbox->ensureToStringAllowed(twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, ($context["this"] ?? null), "page", [], "any", false, false, true, 4), "title", [], "any", false, false, true, 4), 4, $this->source), "html", null, true);
-        echo "</h1>
+        // line 6
+        $context['__cms_content_params'] = [];
+        echo $this->env->getExtension('Cms\Twig\Extension')->contentFunction("header/Header_title.htm"        , $context['__cms_content_params']        );
+        unset($context['__cms_content_params']);
+        echo " </h1>
     <p>";
-        // line 5
-        echo $this->sandbox->ensureToStringAllowed(twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, ($context["this"] ?? null), "page", [], "any", false, false, true, 5), "description", [], "any", false, false, true, 5), 5, $this->source);
-        echo "</p>
+        // line 7
+        $context['__cms_content_params'] = [];
+        echo $this->env->getExtension('Cms\Twig\Extension')->contentFunction("header/Header_description.htm"        , $context['__cms_content_params']        );
+        unset($context['__cms_content_params']);
+        echo " </p>
 </header>";
     }
 
@@ -88,16 +94,18 @@ class __TwigTemplate_76aaabb7754ef58c548a311aa51101fa51ddf42347ac0ccfb359c0ea9f8
 
     public function getDebugInfo()
     {
-        return array (  74 => 5,  70 => 4,  66 => 3,  62 => 1,);
+        return array (  78 => 7,  72 => 6,  66 => 3,  62 => 1,);
     }
 
     public function getSourceContext()
     {
         return new Source("<!-- Header -->
 <header id=\"header\" class=\"alt\">
-    <span class=\"logo\"><img src=\"{{'assets/images/logo.svg'|theme}}\" alt=\"Logo\" /></span>
-    <h1>{{ this.page.title }}</h1>
-    <p>{{ this.page.description|raw }}</p>
+<!--     <span class=\"logo\"><img src=\"{{'assets/images/logo.svg'|theme}}\" alt=\"Logo\" /></span> -->
+
+
+    <h1>{% content 'header/Header_title.htm' %} </h1>
+    <p>{% content 'header/Header_description.htm' %} </p>
 </header>", "/var/www/html/themes/zwiebl-zwiebl_stellar/partials/all_pages/header.htm", "");
     }
 }

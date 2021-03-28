@@ -192,4 +192,9 @@
   'System\\Console\\ThemeList' => 'modules/system/console/ThemeList.php',
   'System\\Console\\ThemeUse' => 'modules/system/console/ThemeUse.php',
   'System\\Console\\ThemeSync' => 'modules/system/console/ThemeSync.php',
+  'Backend\\FormWidgets\\DataTable' => 'modules/backend/formwidgets/DataTable.php',
+  'Backend\\Widgets\\Table' => 'modules/backend/widgets/Table.php',
+  'Backend\\Widgets\\Table\\DataSourceBase' => 'modules/backend/widgets/table/DataSourceBase.php',
+  'Backend\\Widgets\\Table\\ClientMemoryDataSource' => 'modules/backend/widgets/table/ClientMemoryDataSource.php',
+  'Cms\\Twig\\ContentNode' => 'modules/cms/twig/ContentNode.php',
 );
